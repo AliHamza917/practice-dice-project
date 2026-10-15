@@ -1,21 +1,16 @@
-import { useState } from 'react'
-
 import './App.css'
+import { useState } from 'react'
 import LayoutPage from './global/layouts'
 import HomePage from './pages/homePage'
+import GamePage from './pages/gamePage'
 
 function App() {
- 
-  return (
-    <>
-    <div>
-        <LayoutPage>
-          <HomePage/>
+  const [isPlaying, setIsPlaying] = useState(false)
 
-        </LayoutPage>
-    </div>
-     
-    </>
+  return (
+    <LayoutPage>
+      {isPlaying ? <GamePage /> : <HomePage onPlay={() => setIsPlaying(true)} />}
+    </LayoutPage>
   )
 }
 
